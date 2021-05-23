@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen App</title>
+
+    <%- include('layouts/head.html') %>
+
+</head>
+
+<body>
+
+    <%- include('layouts/navbar.html') %>
+
+        <div class="container mt-1 mb-2 justify-content-center align-items-center">
+            <div class="row">                
+                <div class="col-md-1">&nbsp;</div>
+                <div class="col-md-10">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="assets/images/no-image.png" id="imgDisplay" alt="no-image" class="img-fluid img-thumbnail">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <form action="/upload" method="post" enctype="application/x-www-form-urlencoded" id="formUploadImg">
+                                        <input type="hidden" name="attachment" id="attachment" value="" />
+                                        <h4 class="card-title">Carga de fotografías</h4>
+                                        <p class="card-text"><small>Puede seleccionar una imagen de su galería o capturar una fotografía directamente de su cámara</small></p>
+                                        <div class="d-grid gap-2">                                        
+                                            <div class="mb-3">
+                                                <input class="form-control" type="file" id="imgInput" name="imgInput" accept="image/jpeg, image/png" />
+                                            </div>
+                                            <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="modal" data-bs-target="#formCaptureImg">
+                                                Capturar fotografía
+                                            </button>
+                                            <hr />
+                                            <br />
+                                            <button class="btn btn-primary btn-block" type="button" id="btnSubmit">
+                                                Enviar imagen
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" 
+                id="formCaptureImg" 
+                data-bs-backdrop="static" 
+                data-bs-keyboard="false" 
+                tabindex="-1"
+                aria-labelledby="staticBackdropLabel" 
+                aria-hidden="true"
+            >
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Capturando fotografía</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <video id="videoWebCam" class="img-thumbnail"></video>
+                                <canvas id="canvasWebCam" style="display: none;"></canvas>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btnClose" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" id="btnCapture" class="btn btn-primary">Capturar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="msgResult" 
+                class="toast align-items-center text-white bg-success border-0 position-absolute top-50 start-50 translate-middle" 
+                role="alert" 
+                aria-live="assertive" 
+                aria-atomic="true"
+            >
+                <div class="d-flex">
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <%- include('layouts/footer.html') %>
+        <script src="assets/js/app.js"></script>
+
+</body>
+
+</html>

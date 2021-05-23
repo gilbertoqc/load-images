@@ -1,0 +1,20 @@
+{
+  "name": "carga-imagenes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "prod": "node src/index.js"
+  },
+  "author": "Gilberto Quirino Camacho",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mime": "^2.5.2",
+    "nodemon": "^2.0.7"
+  }
+}
